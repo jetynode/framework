@@ -1,7 +1,5 @@
-//========================== Load Modules Start ===========================
-
 //========================== Load Internal Module =========================
-var constants = require("./constant");
+var constants = require("../Support/constant");
 
 // Load exceptions
 class Exception {

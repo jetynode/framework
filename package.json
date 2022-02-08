@@ -25,6 +25,7 @@
     "bunyan": "^1.8.15",
     "dotenv": "^16.0.0",
     "lodash": "^4.17.21",
+    "mysql": "^2.18.1",
     "validatorjs": "^3.22.1"
   },
   "publishConfig": {

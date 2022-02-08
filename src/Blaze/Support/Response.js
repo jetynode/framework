@@ -1,4 +1,4 @@
-var Constant = require("../Exception/constant"),
+var Constant = require("constant"),
   Exception = require("../Exception/Exception");
 logger = require("../Logger").logger;
 

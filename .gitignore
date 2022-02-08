@@ -6,4 +6,4 @@ node_modules/
 #files
 .env
 # .npmrc
-package-lock.json
+# package-lock.json
