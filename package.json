@@ -1,6 +1,6 @@
 {
   "name": "@jetynode/framework",
-  "version": "0.0.5",
+  "version": "0.1.0",
   "description": "The Jetynode Framework",
   "main": "jetynode.js",
   "scripts": {
@@ -8,23 +8,24 @@
   },
   "repository": {
     "type": "git",
-    "url": "git://github.com/jetynode/framework.git"
+    "url": "git+https://github.com/jetynode/framework.git"
   },
   "keywords": [
     "framework",
     "jetynode"
   ],
-  "author": "Prashant Mishra",
+  "author": "Prashant Mishra <programsmagic@gmail.com>",
   "license": "MIT",
   "bugs": {
-    "url": "ttps://github.com/jetynode/framework/issues"
+    "url": "https://github.com/jetynode/framework/issues"
   },
-  "homepage": "ttps://github.com/jetynode/framework",
+  "homepage": "ttps://github.com/jetynode/framework#readme",
   "dependencies": {
     "axios": "^0.25.0",
     "bunyan": "^1.8.15",
     "dotenv": "^16.0.0",
-    "lodash": "^4.17.21"
+    "lodash": "^4.17.21",
+    "validatorjs": "^3.22.1"
   },
   "publishConfig": {
     "@programsmagic:registry": "https://npm.pkg.github.com",
