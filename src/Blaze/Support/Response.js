@@ -1,15 +1,15 @@
-var Constant = require("constant"),
-  Exception = require("../Exception/Exception");
+var constants = require("./constants");
+var Exception = require("../Exception/Exception");
 logger = require("../Logger").logger;
 
 class APIResponse {
   constructor(statusCode, result, request) {
     this.statusCode = statusCode;
-    if (statusCode == Constant.STATUS_CODE.SUCCESS) {
+    if (statusCode == constants.STATUS_CODE.SUCCESS) {
       result.message = result.message ? result.message : "Api Result";
-      result ? (this.responseData = result) : Constant.EMPTY;
+      result ? (this.responseData = result) : constants.EMPTY;
     } else {
-      result ? (this.error = result) : Constant.EMPTY;
+      result ? (this.error = result) : constants.EMPTY;
     }
     this.requestParams = request.body;
     this.time = new Date();
@@ -28,7 +28,7 @@ function error(response, error, request) {
     logger.error(error, "Unhandled error.");
     error = Exception.intrnlSrvrErr(error);
   }
-  var result = new APIResponse(Constant.STATUS_CODE.ERROR, error, request);
+  var result = new APIResponse(constants.STATUS_CODE.ERROR, error, request);
   _sendResponse(response, result);
 }
 
@@ -38,7 +38,7 @@ function handleError(error, request, response, next) {
 }
 
 function success(response, result, request) {
-  var result = new APIResponse(Constant.STATUS_CODE.SUCCESS, result, request);
+  var result = new APIResponse(constants.STATUS_CODE.SUCCESS, result, request);
   _sendResponse(response, result);
 }
 

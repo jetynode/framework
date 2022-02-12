@@ -1,5 +1,5 @@
 //========================== Load Internal Module =========================
-var constants = require("../Support/constant");
+var constants = require("@jetynode/framework/src/Blaze/Support/constants");
 
 // Load exceptions
 class Exception {

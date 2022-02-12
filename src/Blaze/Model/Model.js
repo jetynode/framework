@@ -1,4 +1,4 @@
-const DB = require("../Utils/db");
+const DB = require("@jetynode/framework/src/Blaze/Support/PoolConnection");
 class Model {
   // Fetch all Data of table
   all(callback) {
