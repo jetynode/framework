@@ -1,9 +1,63 @@
 const pool = require("@jetynode/framework/src/Blaze/Support/PoolConnection");
 class Model {
-  constructor() {
-    // if (this.isEmpty(this.table)) {
-    //   throw new Error("table variable is empty");
-    // }
+  select(table = this.table, select = "*") {
+    this.query = `SELECT ${select} FROM ${table} `;
+    return this;
+  }
+
+  where(where) {
+    let conditions = "";
+    // If there is a condition object build query using keys and values
+    if (where) {
+      const conditionKeys = Object.keys(where);
+      const conditionValues = Object.values(where).map((value) =>
+        typeof value === "string" ? `'${value}'` : value
+      );
+      conditionKeys.forEach((key, index) => {
+        conditions += `${key} = ${conditionValues[index]}${
+          index === conditionKeys.length - 1 ? "" : " AND "
+        }`;
+      });
+    }
+    this.query = this.query + ` WHERE ${conditions}`;
+    return this;
+  }
+
+  leftJoin(table, column1, condition, column2) {
+    this.query =
+      this.query + `LEFT JOIN ${table} ON ${column1} ${condition} ${column2}`;
+    return this;
+  }
+
+  rightJoin(table, column1, condition, column2) {
+    this.query =
+      this.query + `RIGHT JOIN ${table} ON ${column1} ${condition} ${column2}`;
+    return this;
+  }
+
+  first() {
+    console.log(this.query);
+    return new Promise((resolve, reject) => {
+      DB.query(this.query, function (err, data) {
+        if (err) {
+          reject(err);
+        } else {
+          resolve(data[0] ?? []);
+        }
+      });
+    });
+  }
+
+  get() {
+    return new Promise((resolve, reject) => {
+      DB.query(this.query, function (err, data) {
+        if (err) {
+          reject(err);
+        } else {
+          resolve(data ?? []);
+        }
+      });
+    });
   }
 
   // Fetch all Data of table
